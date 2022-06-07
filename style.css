@@ -1,3 +1,29 @@
 h1{
-    color: brown;
+    text-align: center;
+}
+
+#d1{
+    font-style: italic;
+    text-align: center;
+}
+#d2{
+    font-style: italic;
+    text-align: center;
+}
+#d3{
+    padding-left: 3%;
+}
+a{
+    color: blue;
+
+}
+a:hover{
+    color: grey;
+}
+a:visited{
+    color: black;
+}
+
+#b1{
+margin-right: 5%;
 }
