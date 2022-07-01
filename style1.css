@@ -1,0 +1,29 @@
+h3{
+    text-align: center;
+}
+
+#d1{
+    text-indent: 280px;
+}
+#d2{
+   text-indent: 130px;
+}
+#d3{
+    padding-left: 3%;
+}
+a{s
+    color: blue;
+
+}
+a:hover{
+    color: grey;
+}
+a:visited{
+    color: rgb(29, 79, 119);
+}
+.count1{
+    color: rgb(11, 75, 212);
+}
+.text{
+    color: blanchedalmond;
+}

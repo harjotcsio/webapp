@@ -1,4 +1,4 @@
-h1{
+h3{
     text-align: center;
 }
 
@@ -27,3 +27,39 @@ a:visited{
 #b1{
 margin-right: 5%;
 }
+
+#pi{
+    
+}
+
+rect {
+    fill: steelblue;
+    fill-opacity: 0.8;
+  }
+  
+  rect:hover {
+    fill-opacity: 1;
+  }
+  
+  path {
+    fill-opacity: 0.8;
+  }
+  
+  .selected,
+  path:hover {
+    fill-opacity: 1;
+  }
+  
+  .axis {
+    font-size: smaller;
+  }
+  
+
+  h4{
+    text-align: center;
+  }
+
+  #map{
+    width: 900px;
+    height:500px;
+  }
