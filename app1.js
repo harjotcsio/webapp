@@ -346,7 +346,7 @@ d3.csv("file.csv").then(function(data) {
         return d["Country"];
       },
       function(d){
-        return d["Jounal"];
+        return d["Journal"];
       },
       function(d){
         return d["Year"];
