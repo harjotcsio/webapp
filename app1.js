@@ -343,13 +343,22 @@ d3.csv("file.csv").then(function(data) {
     .size(100)
     .columns([
       function(d){
+        return d["Title"];
+      },
+      function(d){
+        return d["Journal / Conference Publication"];
+      },
+      function(d){
+        return d["Year of Publication"];
+      },
+      function(d){
+        return d["Authors"];
+      },
+      function(d){
         return d["Country"];
       },
       function(d){
-        return d["Journal"];
-      },
-      function(d){
-        return d["Year"];
+        return d["Focus of Work"];
       },
     ])
     .sortBy(dc.pluck('year'))
