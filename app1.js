@@ -286,7 +286,7 @@ var yearChart = new dc.BarChart("#Year");
 
 
 
-d3.csv("file.csv").then(function(data) {
+d3.csv("file_f.csv").then(function(data) {
 
   var ndx =crossfilter(data);
   var all= ndx.groupAll();
@@ -361,7 +361,7 @@ d3.csv("file.csv").then(function(data) {
         return d["Focus of Work"];
       },
     ])
-    .sortBy(dc.pluck('year'))
+    .sortBy(dc.pluck('Year'))
     .order(d3.descending)
     .on('renderlet', function(table){
       table.select('tr.dc-table-group').remove();
