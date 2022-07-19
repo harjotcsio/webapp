@@ -27,7 +27,7 @@ d3.csv("review.csv").then(function(data) {
   var allDim = ndx.dimension(function(d){ return d});
 
   var CountryGroup = CountryDim.group().reduceCount();
-  //var WaterTypeGroup = WaterTypeDim.group().reduceCount();
+  var ResTypeGroup = ResTypeDim.group().reduceCount();
   var yearGroup= yearDim.group().reduceCount();
   
   CountryChart
@@ -47,8 +47,8 @@ d3.csv("review.csv").then(function(data) {
     .ordinalColors(['#0096FF', '#40E0D0', '#228B22'])
     .slicesCap(4)
     .innerRadius(10)
-    .dimension(WaterTypeDim)
-    .group(WaterTypeGroup);
+    .dimension(ResTypeDim)
+    .group(ResTypeGroup);
 
   yearChart
     .width(550)

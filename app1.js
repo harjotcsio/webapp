@@ -283,6 +283,11 @@ dataTable = dc.dataTable('#data-table');
 var CountryChart= new dc.PieChart('#Country');
 var WaterTypeChart = new dc.PieChart("#WaterType");
 var yearChart = new dc.BarChart("#Year");
+var firstInterestChart = dc.rowChart('#first-interest-row-chart');
+var secondInterestChart = dc.rowChart('#second-interest-row-chart');
+var thirdInterestChart = dc.rowChart('#third-interest-row-chart');
+var fourthInterestChart = dc.rowChart('#fourth-interest-row-chart');
+var fifthInterestChart = dc.rowChart('#fifth-interest-row-chart');
 
 
 
@@ -295,10 +300,37 @@ d3.csv("file_f.csv").then(function(data) {
   var JournalDim= ndx.dimension(function(d){ return d["Journal"]});
   var WaterTypeDim= ndx.dimension(function(d){ return d["WaterType"]});
   var allDim = ndx.dimension(function(d){ return d});
+  var firstInterestDim = ndx.dimension(function(d) {
+    return d["Keyword 1"];
+  });
+
+  var secondInterestDim = ndx.dimension(function(d) {
+      return d["Keyword 2"];
+  });
+
+  var thirdInterestDim = ndx.dimension(function(d) {
+      return d["Keyword 3"];
+  });
+
+  var fourthInterestDim = ndx.dimension(function(d) {
+      return d["Keyword 4"];
+  });
+
+  var fifthInterestDim = ndx.dimension(function(d) {
+      return d["Keyword 5"];
+  });
+
+
+
 
   var CountryGroup = CountryDim.group().reduceCount();
   var WaterTypeGroup = WaterTypeDim.group().reduceCount();
   var yearGroup= yearDim.group().reduceCount();
+  var firstInterestGroup = firstInterestDim.group().reduceCount();
+  var secondInterestGroup = secondInterestDim.group().reduceCount();
+  var thirdInterestGroup = thirdInterestDim.group().reduceCount();
+  var fourthInterestGroup = fourthInterestDim.group().reduceCount();
+  var fifthInterestGroup = fifthInterestDim.group().reduceCount();
   
   CountryChart
     .width(220)
@@ -333,6 +365,101 @@ d3.csv("file_f.csv").then(function(data) {
     .centerBar(true)
       // .xAxisLabel('Injury Cause')
     .yAxisLabel('Count');
+
+    firstInterestChart /* dc.rowChart('#day-of-week-chart', 'chartGroup') */
+    .width(300)
+    .height(550)
+    .margins({
+        top: 20,
+        left: 10,
+        right: 10,
+        bottom: 20
+    })
+    .dimension(firstInterestDim)
+    .group(firstInterestGroup)
+    .elasticX(true)
+    .colors("#1ca3ec")
+    .ordering(function(d) {
+        return -d.value;
+    })
+    .xAxis().ticks(8)
+
+secondInterestChart /* dc.rowChart('#day-of-week-chart', 'chartGroup') */
+    .width(300)
+    .height(550)
+    .margins({
+        top: 20,
+        left: 10,
+        right: 10,
+        bottom: 20
+    })
+    // .colors(d3.scale.category20())
+    .group(secondInterestGroup)
+    .dimension(secondInterestDim)
+    // .x(d3.scaleLinear().domain([6,20]))
+    .elasticX(true)
+    .colors("#1ca3ec")
+    // check how to let d3 tick marks on integers only: https://jsfiddle.net/PBrockmann/k7qnw3oj/
+    .ordering(function(d) {
+        return -d.value;
+    })
+    .xAxis().ticks(8)
+
+
+thirdInterestChart /* dc.rowChart('#day-of-week-chart', 'chartGroup') */
+    .width(300)
+    .height(550)
+    .margins({
+        top: 20,
+        left: 10,
+        right: 10,
+        bottom: 20
+    })
+    .colors("#1ca3ec")
+    .group(thirdInterestGroup)
+    .dimension(thirdInterestDim)
+    //ascending order 
+    .ordering(function(d) {
+        return -d.value;
+    })
+    .xAxis().ticks(8)
+
+fourthInterestChart /* dc.rowChart('#day-of-week-chart', 'chartGroup') */
+    .width(300)
+    .height(550)
+    .margins({
+        top: 20,
+        left: 10,
+        right: 10,
+        bottom: 20
+    })
+    .colors("#1ca3ec")
+    .group(fourthInterestGroup)
+    .dimension(fourthInterestDim)
+    .ordering(function(d) {
+        return -d.value;
+    })
+    .xAxis().ticks(7)
+
+fifthInterestChart /* dc.rowChart('#day-of-week-chart', 'chartGroup') */
+    .width(300)
+    .height(550)
+    .margins({
+        top: 20,
+        left: 10,
+        right: 10,
+        bottom: 20
+    })
+    .colors("#1ca3ec")
+    .group(fifthInterestGroup)
+    .dimension(fifthInterestDim)
+    .ordering(function(d) {
+        return -d.value;
+    })
+    .xAxis().ticks(20)
+
+
+
 
   dataCount
     .crossfilter(ndx)
@@ -375,14 +502,14 @@ d3.csv("file_f.csv").then(function(data) {
           var fillColor_Var = "";
           var paperFocus = d["WaterType"];
 
-          if (paperFocus == "S") {
-              fillColor_Var = "#228B22";
-          } else if (paperFocus == "G") {
+          if (paperFocus == "R,S") {
               fillColor_Var = "#0096FF";
-          } else if (paperFocus == "SE") {
+          } else if (paperFocus == "G") {
               fillColor_Var = "#40E0D0";
-          } else {
+          } else if (paperFocus == "Sea") {
               fillColor_Var = "#B9C0C3";
+          } else {
+              fillColor_Var = "#228B22";
           }
 
           var marker = L.circleMarker([latitude, longitude], {
@@ -406,25 +533,41 @@ d3.csv("file_f.csv").then(function(data) {
   
     });
 
-   /* d3.selectAll('a#Year').on('click', function() {
+    d3.selectAll('a#year').on('click', function() {
         yearChart.filterAll();
         dc.redrawAll();
-        d3.event.stopPropagation();
     });
 
-    d3.selectAll('a#Country').on('click', function() {
+    d3.selectAll('a#cntry').on('click', function() {
         CountryChart.filterAll();
         dc.redrawAll();
-        d3.event.stopPropagation();
     });
 
-    d3.selectAll('a#WaterType').on('click', function() {
+    d3.selectAll('a#wtype').on('click', function() {
         WaterTypeChart.filterAll();
         dc.redrawAll();
-        d3.event.stopPropagation();
     });
 
-*/ 
+    d3.selectAll('a#first-interest').on('click', function() {
+      firstInterestChart.filterAll();
+      dc.redrawAll();
+  });
+    d3.selectAll('a#second-interest').on('click', function() {
+        secondInterestChart.filterAll();
+        dc.redrawAll();
+    });
+    d3.selectAll('a#third-interest').on('click', function() {
+        thirdInterestChart.filterAll();
+        dc.redrawAll();
+    });
+    d3.selectAll('a#fourth-interest').on('click', function() {
+        fourthInterestChart.filterAll();
+        dc.redrawAll();
+    });
+    d3.selectAll('a#fifth-interest').on('click', function() {
+        fifthInterestChart.filterAll();
+        dc.redrawAll();
+    });
 
   dc.renderAll();
 

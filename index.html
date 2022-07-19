@@ -18,7 +18,7 @@
     <script src="crossfilter.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dc/4.2.7/dc.js" integrity="sha512-ULRjYchIGoNAXgktDOljo9I6068lh36z4K2a8fDMQLp5xHHxGpvCdLr7TPbYYxDlT2ik585NeCO9xDIFS9SiEg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/underscore@1.13.4/underscore-umd-min.js"></script>
-    <title>Document</title>
+    <title>Water Quality Monitoring</title>
 </head>
 <body>
     <div class="container-fluid ml-4">
@@ -58,7 +58,7 @@
 </div>
 
 <div class="col-xs-4 ml-5 dc-chart">
-<h4>Paper focus</h4>
+<h4>Paper focus <small><a id="wtype" href="#" onclick="return false;">reset</a></small></h4>
 <svg id="WaterType" height="200" width="220">
 
 </svg>
@@ -66,7 +66,7 @@
 
 
 <div class="col-xs-4 ml-5 dc-chart">
-<h4>Country</h4>
+<h4>Country <small><a id="cntry" href="#" onclick="return false;">reset</a></small></h4>
 <svg id="Country"  height="200" width="220"></svg>
 </div>
         </div>
@@ -75,7 +75,7 @@
 
 <div class="row">
 <div class="col-xs-6 dc-chart">
-    <h4>Hist1</h4>
+    <h4>Hist1 <small><a id="year" href="#" onclick="return false;">reset</a></small></h4>
     <svg id="Year" width="550" height="350"></svg>
 </div>
 <div class="col-xs-6 dc-chart">
@@ -84,9 +84,36 @@
 </div>
 </div>
 
+<div id="section2" class="container-fluid">
+    <div class="row" id="control-row">
+        <div class="col-xs-3 row-chart">
+            <h4>First Keyword<small><a id="first-interest" href="#" onclick="return false;"> reset</a></small></h4>
+            <div class="dc-chart" id="first-interest-row-chart"></div>
+        </div>
+        <div class="col-xs-3 row-chart">
+            <h4>Second Keyword<small><a id="second-interest" href="#" onclick="return false;"> reset</a></small></h4>
+            <div class="dc-chart" id="second-interest-row-chart"></div>
+        </div>
+
+        <div class="col-xs-2 row-chart">
+            <h4>Third Keyword <small><a id="third-interest" href="#" onclick="return false;"> reset</a></small></h4>
+            <div class="dc-chart" id="third-interest-row-chart"></div>
+        </div>
+
+        <div class="col-xs-2 row-chart">
+            <h4>Fourth Keyword <small><a id="fourth-interest" href="#" onclick="return false;"> reset</a></small></h4>
+            <div class="dc-chart" id="fourth-interest-row-chart"></div>
+        </div>
+        <div class="col-xs-2 row-chart">
+            <h4>Fifth Keyword <small><a id="fifth-interest" href="#" onclick="return false;"> reset</a></small></h4>
+            <div class="dc-chart" id="fifth-interest-row-chart"></div>
+        </div>
+    </div>
+</div>
+
 <div class="row">
     <div >
-        <table class="table table-bordered table-striped dc-chart" id="data-table">
+        <table class="table table-bordered table-striped dc-chart ml-2" id="data-table">
             <thead>
                 <tr class="header">
                     <th>Title</th>
