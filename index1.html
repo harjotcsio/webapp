@@ -30,20 +30,20 @@
             </h3>
 
             <p id="d1" ><i><a href="#">(Developed by)</a></i></p>
-            <p id="d2"><i>(clicking  "About the project" button for a brief demo video of the web app)</i>
+            <p id="d2"><i>This page is an illustration of the analysis of Review Papers</i>
             </p>
-        
+            <p id="d3"><a href="index1.html" target="_blank">For analysis of Research Papers click here</a></p>
     
       <div class="row ml-2" id="count-row">
           <div class="col-xs-12 dc-data-count dc-chart" id="data-count">
               <h4>
                   Reviewed Papers
               <small>
-                  <span class="count1"> 56</span>
+                  <span class="filter-count"> 56</span>
                   <span class="text">
                   selected out of
                   </span>
-                  <span class="count1"> 56</span>
+                  <span class="total-count"> 56</span>
                   <span class="text">
                   records |
                   </span>
@@ -83,7 +83,32 @@
     <svg id="water"></svg>
 </div>
 </div>
+<div id="section2" class="container-fluid">
+    <div class="row" id="control-row">
+        <div class="col-xs-3 row-chart">
+            <h4>First Keyword<small><a id="first-interest" href="#" onclick="return false;"> reset</a></small></h4>
+            <div class="dc-chart" id="first-interest-row-chart"></div>
+        </div>
+        <div class="col-xs-3 row-chart">
+            <h4>Second Keyword<small><a id="second-interest" href="#" onclick="return false;"> reset</a></small></h4>
+            <div class="dc-chart" id="second-interest-row-chart"></div>
+        </div>
 
+        <div class="col-xs-2 row-chart">
+            <h4>Third Keyword <small><a id="third-interest" href="#" onclick="return false;"> reset</a></small></h4>
+            <div class="dc-chart" id="third-interest-row-chart"></div>
+        </div>
+
+        <div class="col-xs-2 row-chart">
+            <h4>Fourth Keyword <small><a id="fourth-interest" href="#" onclick="return false;"> reset</a></small></h4>
+            <div class="dc-chart" id="fourth-interest-row-chart"></div>
+        </div>
+        <div class="col-xs-2 row-chart">
+            <h4>Fifth Keyword <small><a id="fifth-interest" href="#" onclick="return false;"> reset</a></small></h4>
+            <div class="dc-chart" id="fifth-interest-row-chart"></div>
+        </div>
+    </div>
+</div>
 <div class="row">
     <div >
         <table class="table table-bordered table-striped dc-chart" id="data-table">
