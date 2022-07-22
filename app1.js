@@ -318,7 +318,7 @@ fifthInterestChart /* dc.rowChart('#day-of-week-chart', 'chartGroup') */
       qualityChart.filterAll();
       dc.redrawAll();
   });
-
+  
     d3.selectAll('a#first-interest').on('click', function() {
       firstInterestChart.filterAll();
       dc.redrawAll();
