@@ -583,6 +583,10 @@ fifthInterestChart /* dc.rowChart('#day-of-week-chart', 'chartGroup') */
         WaterTypeChart.filterAll();
         dc.redrawAll();
     });
+    d3.selectAll('a#Quality').on('click', function() {
+      qualityChart.filterAll();
+      dc.redrawAll();
+  });
 
     d3.selectAll('a#first-interest').on('click', function() {
       firstInterestChart.filterAll();

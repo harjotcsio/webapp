@@ -230,6 +230,15 @@ d3.csv("review.csv").then(function(data) {
         {
           var longitude = d["lon"];
           var latitude = d["lat"];
+          var title = d["Title"];
+          var pdf_url = d["Access to Publication"];
+          var year = d["Year of Publication"];
+          var authors_names = d["Authors"];
+          var keyword_1 = d["Keyword 1"];
+          var keyword_2 = d["Keyword 2"];
+          var keyword_3 = d["Keyword 3"];
+          var keyword_4 = d["Keyword 4"];
+          var keyword_5 = d["Keyword 5"];
 
           var fillColor_Var = "";
          var paperFocus = d["Wtype"];
@@ -254,6 +263,16 @@ d3.csv("review.csv").then(function(data) {
             opacity: 1,
             fillOpacity: 0.8
         });
+        marker.bindPopup(
+
+          // "<p><b>Murphy Lecturer Information: </b></p><br>" +
+          // "<dl>" +
+          "<dt><span style='font-weight:bolder'>Paper Title: </span> </dt> <dd>" + title + "<dd>" +
+          "<dt><span style='font-weight:bolder'>PDF: </span> </dt> <dd>" + '<a href= "' + pdf_url + '" target="_blank">' + "Click to access the PDF" + "</a>" + "<dd>" +
+          "<dt><span style='font-weight:bolder'>Year: </span> </dt> <dd>" + year + "<dd>" +
+          "<dt><span style='font-weight:bolder'>Authors: </span> </dt> <dd>" + authors_names + "<dd>" +
+          "<dt><span style='font-weight:bolder'>Keywords: </span> </dt> <dd>" + keyword_1 + ", " + keyword_2 + ", " + keyword_3 + ", " + keyword_4 + ", " + keyword_5 + "<dd>"
+      );
         paperMarkers.addLayer(marker);
       });
       map.addLayer(paperMarkers);
