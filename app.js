@@ -13,6 +13,7 @@ dataTable = dc.dataTable('#data-table');
 var CountryChart= new dc.PieChart('#Country');
 var ResTypeChart = new dc.PieChart("#WaterType");
 var yearChart = new dc.BarChart("#Year");
+var journalChart = new dc.BarChart("#journal")
 var firstInterestChart = dc.rowChart('#first-interest-row-chart');
 var secondInterestChart = dc.rowChart('#second-interest-row-chart');
 var thirdInterestChart = dc.rowChart('#third-interest-row-chart');
@@ -28,7 +29,7 @@ d3.csv("review.csv").then(function(data) {
   var all= ndx.groupAll();
   var yearDim= ndx.dimension(function(d){ return d["Year"]});
   var CountryDim= ndx.dimension(function(d){ return d["Country"]});
-  var JournalDim= ndx.dimension(function(d){ return d["Journal"]});
+  var JournalDim= ndx.dimension(function(d){ return d["Conference/Journal"]});
   var ResTypeDim= ndx.dimension(function(d){ return d["Wtype"]});
   var allDim = ndx.dimension(function(d){ return d});
   var firstInterestDim = ndx.dimension(function(d) {
@@ -57,6 +58,7 @@ d3.csv("review.csv").then(function(data) {
   var CountryGroup = CountryDim.group().reduceCount();
   var ResTypeGroup = ResTypeDim.group().reduceCount();
   var yearGroup= yearDim.group().reduceCount();
+  var JournalGroup= JournalDim.group().reduceCount();
   var firstInterestGroup = firstInterestDim.group().reduceCount();
   var secondInterestGroup = secondInterestDim.group().reduceCount();
   var thirdInterestGroup = thirdInterestDim.group().reduceCount();
@@ -89,6 +91,20 @@ d3.csv("review.csv").then(function(data) {
     .height(350)
     .dimension(yearDim)
     .group(yearGroup)
+    .x(d3.scaleBand()) //d3.scale.ordinal().domain(genusDim) //d3.scaleBand() for d3 v4
+    .xUnits(dc.units.ordinal)
+    .elasticX(true)
+    .elasticY(true)
+    .brushOn(false)
+    .centerBar(true)
+      // .xAxisLabel('Injury Cause')
+    .yAxisLabel('Count');
+
+    journalChart
+    .width(550)
+    .height(350)
+    .dimension(JournalDim)
+    .group(JournalGroup)
     .x(d3.scaleBand()) //d3.scale.ordinal().domain(genusDim) //d3.scaleBand() for d3 v4
     .xUnits(dc.units.ordinal)
     .elasticX(true)
@@ -297,10 +313,13 @@ d3.csv("review.csv").then(function(data) {
   });
 
   d3.selectAll('a#wtype').on('click', function() {
-      WaterTypeChart.filterAll();
+      ResTypeChart.filterAll();
       dc.redrawAll();
   });
-
+  d3.selectAll('a#Journal').on('click', function() {
+    journalChart.filterAll();
+    dc.redrawAll();
+});
   d3.selectAll('a#first-interest').on('click', function() {
     firstInterestChart.filterAll();
     dc.redrawAll();

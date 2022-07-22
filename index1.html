@@ -29,10 +29,10 @@
               <!-- <a href=# target="_blank"><img src="" alt="icon" style="width:10%;height:10%;"></a> -->
             </h3>
 
-            <p id="d1" ><i><a href="#">(Developed by)</a></i></p>
-            <p id="d2"><i>This page is an illustration of the analysis of Review Papers</i>
-            </p>
-            <p id="d3"><a href="index.html" target="_blank">For analysis of Research Papers click here</a></p>
+             <!--<p id="d1" ><i><a href="#">(Developed by)</a></i></p> -->
+            <h4 id="d2"><i>This page is an illustration of the analysis of Review Papers</i>
+            </h4>
+            <h4 id="d3"><a href="index.html" target="_blank">For analysis of Research Papers click here</a></h4>
     
       <div class="row ml-2" id="count-row">
           <div class="col-xs-12 dc-data-count dc-chart" id="data-count">
@@ -47,10 +47,11 @@
                   <span class="text">
                   records |
                   </span>
-                  <a href="#"> Reset All</a>
+                  <a href=""> Reset All</a>
               </small>
-              <button type="button" class="btn btn-secondary info pull-right" data-toggle="modal" data-target="#myModal">About the project</button>
-              </h4>      
+             <!-- <button type="button" class="btn btn-secondary info pull-right" data-toggle="modal" data-target="#myModal">About the project</button>
+              </h4>
+            -->      
             </div>
                 </div>
         <div class="row  mt-4">
@@ -58,7 +59,7 @@
 </div>
 
 <div class="col-xs-4 ml-5 dc-chart">
-<h4>Paper focus</h4>
+<h4>Paper focus <small><a id="wtype" href="#" onclick="return false;">reset</a></small></h4>
 <svg id="WaterType" height="200" width="220">
 
 </svg>
@@ -66,7 +67,7 @@
 
 
 <div class="col-xs-4 ml-5 dc-chart">
-<h4>Country</h4>
+<h4>Country <small><a id="cntry" href="#" onclick="return false;">reset</a></small></h4>
 <svg id="Country"  height="200" width="220"></svg>
 </div>
         </div>
@@ -74,13 +75,13 @@
 
 
 <div class="row">
-<div class="col-xs-6 dc-chart">
-    <h4>Hist1</h4>
-    <svg id="Year" width="550" height="350"></svg>
+<div class="col-xs-6 dc-chart mr-5">
+    <h4>Year Count <small><a id="year" href="#" onclick="return false;">reset</a></small></h4>
+    <svg id="Year" width="700" height="350"></svg>
 </div>
-<div class="col-xs-6 dc-chart">
-    <h4>Hist2</h4>
-    <svg id="water"></svg>
+<div class="col-xs-6 dc-chart ml-5">
+    <h4>Publication Type Count <small><a id="Journal" href="#" onclick="return false;">reset</a></small></h4>
+    <svg id="journal" width="700" height="350"></svg>
 </div>
 </div>
 <div class="row" id="control-row">
