@@ -283,6 +283,7 @@ dataTable = dc.dataTable('#data-table');
 var CountryChart= new dc.PieChart('#Country');
 var WaterTypeChart = new dc.PieChart("#WaterType");
 var yearChart = new dc.BarChart("#Year");
+var qualityChart= new dc.BarChart("#quality");
 var firstInterestChart = dc.rowChart('#first-interest-row-chart');
 var secondInterestChart = dc.rowChart('#second-interest-row-chart');
 var thirdInterestChart = dc.rowChart('#third-interest-row-chart');
@@ -299,6 +300,7 @@ d3.csv("file_f.csv").then(function(data) {
   var CountryDim= ndx.dimension(function(d){ return d["Country"]});
   var JournalDim= ndx.dimension(function(d){ return d["Journal"]});
   var WaterTypeDim= ndx.dimension(function(d){ return d["WaterType"]});
+  var qualityDim= ndx.dimension(function(d){return d["Focus of Work"]});
   var allDim = ndx.dimension(function(d){ return d});
   var firstInterestDim = ndx.dimension(function(d) {
     return d["Keyword 1"];
@@ -326,6 +328,7 @@ d3.csv("file_f.csv").then(function(data) {
   var CountryGroup = CountryDim.group().reduceCount();
   var WaterTypeGroup = WaterTypeDim.group().reduceCount();
   var yearGroup= yearDim.group().reduceCount();
+  var qualityGroup= qualityDim.group().reduceCount();
   var firstInterestGroup = firstInterestDim.group().reduceCount();
   var secondInterestGroup = secondInterestDim.group().reduceCount();
   var thirdInterestGroup = thirdInterestDim.group().reduceCount();
@@ -365,6 +368,20 @@ d3.csv("file_f.csv").then(function(data) {
     .centerBar(true)
       // .xAxisLabel('Injury Cause')
     .yAxisLabel('Count');
+
+
+  qualityChart
+      .width(550)
+      .height(350)
+      .dimension(qualityDim)
+      .group(qualityGroup)
+      .x(d3.scaleBand()) 
+      .xUnits(dc.units.ordinal)
+      .elasticX(true)
+      .elasticY(true)
+      .brushOn(false)
+      .centerBar(true)
+
 
     firstInterestChart /* dc.rowChart('#day-of-week-chart', 'chartGroup') */
     .width(300)
